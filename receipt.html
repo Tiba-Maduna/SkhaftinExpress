@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Receipt | SkhaftinExpress</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --green: #103b2e; --gold: #c9a85b; --cream: #f8f6ef; --dark: #171c18; --grey: #777d76; --border: #e8e5dc; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); }
+a { text-decoration: none; color: inherit; }
+.container { width: min(1200px, 90%); margin: auto; }
+.announcement { background: var(--green); color: white; text-align: center; padding: 10px; font-size: 11px; letter-spacing: 2px; font-weight: 500; }
+nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--border); }
+.nav-container { max-width: 1300px; width: 92%; margin: auto; min-height: 82px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 23px; font-weight: 800; color: var(--green); letter-spacing: -1px; }
+.logo span { color: var(--gold); }
+
+/* RECEIPT */
+.page { max-width: 520px; width: 92%; margin: auto; padding: 40px 0 60px; text-align: center; }
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 4px; font-size: 11px; font-weight: 700; margin-bottom: 12px; }
+.page h1 { font-family: 'Playfair Display', serif; color: var(--green); font-size: clamp(32px, 5vw, 44px); margin-bottom: 8px; }
+.page > p { color: var(--grey); font-size: 13px; margin-bottom: 28px; }
+.receipt-card { background: white; border: 1px solid var(--border); border-radius: 7px; padding: 28px; text-align: left; }
+.qr-wrap { text-align: center; margin-bottom: 22px; }
+.qr-box { width: 160px; height: 160px; border: 2px solid var(--green); border-radius: 7px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; background: white; overflow: hidden; }
+.qr-box img { width: 100%; height: 100%; object-fit: cover; }
+.qr-wrap small { color: var(--grey); font-size: 11px; letter-spacing: 1px; }
+.pin-box { text-align: center; background: #fdfaf2; border: 1px solid var(--gold); border-radius: 4px; padding: 16px; margin-bottom: 22px; }
+.pin-box span { display: block; font-size: 11px; letter-spacing: 2px; font-weight: 700; color: var(--grey); text-transform: uppercase; margin-bottom: 4px; }
+.pin-box b { font-size: 32px; letter-spacing: 8px; color: var(--green); }
+.pin-box small { display: block; font-size: 11px; color: var(--grey); margin-top: 4px; }
+.section-label { font-family: 'Playfair Display', serif; color: var(--green); font-size: 19px; margin-bottom: 14px; }
+.summary-item { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 13px; }
+.summary-item:last-of-type { border-bottom: none; }
+.summary-item small { color: var(--grey); display: block; font-size: 11px; }
+.summary-item b { white-space: nowrap; }
+.summary-row { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; color: var(--grey); }
+.summary-row.total { font-weight: 800; font-size: 19px; color: var(--dark); border-top: 1px solid var(--border); margin-top: 10px; padding-top: 14px; }
+.summary-row.total span:last-child { color: var(--green); }
+.delivery-box { display: flex; gap: 12px; align-items: center; background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 16px; margin-top: 20px; }
+.delivery-box .icon-box { width: 44px; height: 44px; min-width: 44px; background: var(--green); color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; }
+.delivery-box b { font-size: 13px; display: block; }
+.delivery-box small { font-size: 12px; color: var(--grey); line-height: 1.5; }
+.thank-you { text-align: center; margin-top: 26px; }
+.thank-you h2 { font-family: 'Playfair Display', serif; color: var(--green); font-size: 24px; margin-bottom: 6px; }
+.thank-you p { font-size: 12px; color: var(--grey); }
+.btn { display: block; width: 100%; text-align: center; padding: 16px 30px; font-size: 12px; font-weight: 700; letter-spacing: .5px; border-radius: 4px; border: none; cursor: pointer; margin-top: 22px; }
+.btn-primary { background: var(--gold); color: var(--dark); }
+.btn-ghost { background: white; border: 1px solid var(--border); color: var(--dark); }
+footer { background: #091f17; color: white; padding: 65px 0 25px; margin-top: 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 45px; margin-bottom: 50px; }
+.footer-brand p { max-width: 360px; color: #aebdb4; font-size: 12px; line-height: 1.9; margin-top: 18px; }
+footer h3 { font-size: 14px; margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links a { color: #aebdb4; font-size: 12px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 23px; text-align: center; color: #aebdb4; font-size: 11px; }
+@media(max-width: 700px){ .footer-grid { grid-template-columns: 1fr; gap: 35px; } }
+</style>
+</head>
+<body>
+
+<div class="announcement">QUALITY GROCERIES - PREMIUM EXPERIENCE - MADE FOR MZANSI</div>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Skhaftin<span>Express.</span></a>
+    <a href="categories.html" style="font-size:12px;font-weight:700;">BACK TO SHOP</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="eyebrow">Order Confirmed</div>
+  <h1>Your Receipt</h1>
+  <p id="orderMeta">Thank you, your order is on its way.</p>
+
+  <div class="receipt-card">
+    <div class="qr-wrap">
+      <div class="qr-box"><img id="qrImg" alt="QR Code"></div>
+      <small>SHOW THIS QR TO YOUR DRIVER</small>
+    </div>
+
+    <div class="pin-box">
+      <span>Your PIN</span>
+      <b id="pinCode">----</b>
+      <small>Give this PIN to your driver to confirm delivery</small>
+    </div>
+
+    <div class="section-label">Summary</div>
+    <div id="summaryList"></div>
+
+    <div class="summary-row"><span>Subtotal</span><span id="subTotal">R0.00</span></div>
+    <div class="summary-row"><span>Delivery (<span id="deliveryLabel">Standard</span>)</span><span id="deliveryFee">R60.00</span></div>
+    <div class="summary-row total"><span>Total</span><span id="grandTotal">R0.00</span></div>
+
+    <div class="delivery-box">
+      <div class="icon-box" id="deliveryIcon">STD</div>
+      <div>
+        <b id="deliveryTitle">Standard Delivery is coming with your order</b>
+        <small id="deliveryText">Same day delivery. Your driver will call on arrival.</small>
+      </div>
+    </div>
+
+    <div class="thank-you">
+      <h2>Thank for Using SkhaftinExpress</h2>
+      <p>We appreciate you shopping with us. See you again soon.</p>
+    </div>
+
+    <button class="btn btn-primary" onclick="window.location.href='categories.html'">BACK TO CATEGORIES</button>
+    <button class="btn btn-ghost" onclick="window.print()">PRINT RECEIPT</button>
+  </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color:white">Skhaftin<span>Express.</span></div>
+                <p>Mzansi's premium grocery destination. Quality products, everyday convenience and a better way to shop.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#story">Our Story</a>
+                    <a href="index.html#shop">Shop</a>
+                    <a href="index.html#features">Why Choose Us</a>
+                </div>
+            </div>
+            <div>
+                <h3>Customer Information</h3>
+                <div class="footer-links">
+                    <a href="index.html#contact">Contact Us</a>
+                    <a href="index.html#shop">Our Products</a>
+                    <a href="index.html#contact">Delivery Information</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">(c) 2026 SkhaftinExpress. All Rights Reserved. Proudly made for Mzansi.</div>
+    </div>
+</footer>
+
+<script>
+  // Load last order saved from confirmaddress.html
+  const order = JSON.parse(localStorage.getItem("skhaftin_last_order") || "{}");
+  const cart = order.cart || {};
+  const address = order.address || {};
+  const deliveryFee = order.deliveryFee || 60;
+  const subtotal = order.subtotal || 0;
+  const total = order.total || 0;
+
+  // 1. PIN - Random 4 digits, saved once so refresh does not change it
+  let pin = localStorage.getItem("skhaftin_last_pin");
+  if (!pin) {
+    pin = String(Math.floor(1000 + Math.random() * 9000));
+    localStorage.setItem("skhaftin_last_pin", pin);
+  }
+  document.getElementById("pinCode").textContent = pin;
+
+  // 2. QR Code - encodes PIN + total + name
+  const qrData = "SkhaftinExpress | PIN:" + pin + " | Total:R" + total.toFixed(2) + " | Name:" + (address.name || "");
+  document.getElementById("qrImg").src = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + encodeURIComponent(qrData);
+
+  // 3. Meta + Summary
+  document.getElementById("orderMeta").textContent = (address.name ? "Thank you " + address.name + ", your " : "Your ") + (order.deliveryOption || "Standard") + " order is on its way to " + (address.suburb || "your address") + ".";
+  document.getElementById("summaryList").innerHTML = Object.values(cart).map(item => `
+    <div class="summary-item">
+      <div><b>${item.name}</b><small>${item.aisle || ""} - R${item.price.toFixed(2)} each</small></div>
+      <div style="text-align:right;"><b>R${(item.price * item.quantity).toFixed(2)}</b><small>Qty: ${item.quantity}</small></div>
+    </div>
+  `).join("") || "<p style='font-size:13px;color:#777d76;'>No items found.</p>";
+
+  document.getElementById("subTotal").textContent = "R" + subtotal.toFixed(2);
+  document.getElementById("deliveryFee").textContent = "R" + deliveryFee.toFixed(2);
+  document.getElementById("grandTotal").textContent = "R" + total.toFixed(2);
+
+  const isExpress = (order.deliveryOption || "").includes("150") || deliveryFee === 150;
+  document.getElementById("deliveryLabel").textContent = isExpress ? "Express" : "Standard";
+  document.getElementById("deliveryIcon").textContent = isExpress ? "EXP" : "STD";
+  document.getElementById("deliveryTitle").textContent = (isExpress ? "Express Delivery" : "Standard Delivery") + " is coming with your order";
+  document.getElementById("deliveryText").textContent = isExpress ? "Within 1 hour delivery. Your driver will call on arrival." : "Same day delivery. Your driver will call on arrival.";
+
+  // Clear basket now that order is done, so categories starts fresh
+  localStorage.removeItem("skhaftin_cart");
+  localStorage.removeItem("skhaftin_checkout_total");
+</script>
+</body>
+</html>

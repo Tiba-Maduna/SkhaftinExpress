@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkhaftinExpress | Premium Grocery Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+    --green: #103b2e;
+    --green-light: #1b5942;
+    --gold: #c9a85b;
+    --cream: #f8f6ef;
+    --white: #ffffff;
+    --dark: #171c18;
+    --grey: #777d76;
+    --border: #e8e5dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; font-size: large; }
+a { text-decoration: none; color: inherit; }
+.container { width: min(1200px, 90%); margin: auto; }
+
+/* ANNOUNCEMENT */
+.announcement { background: var(--green); color: white; text-align: center; padding: 10px; font-size: 11px; letter-spacing: 2px; font-weight: 500; }
+
+/* NAVIGATION */
+nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.97); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+.nav-container { max-width: 1300px; width: 92%; margin: auto; min-height: 82px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.logo { font-size: 23px; font-weight: 800; color: var(--green); letter-spacing: -1px; }
+.logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { font-size: 13px; font-weight: 600; transition: .3s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-shop { background: var(--green); color: white; padding: 12px 22px; border-radius: 4px; font-size: 12px; font-weight: 700; transition: .3s; }
+.nav-shop:hover { background: var(--gold); color: var(--dark); }
+
+/* FIX FOR LOG IN / LOG OUT BUTTON - ICON + TEXT ALIGNED */
+#Logged { display: flex; align-items: center; gap: 6px; }
+#Logged svg { width: 18px; height: 18px; flex-shrink: 0; display: block; }
+#Logged #LoginText { line-height: 1; }
+
+/* HERO */
+.hero { min-height: 680px; display: flex; align-items: center; color: white; background: linear-gradient(90deg, rgba(5,27,19,.90), rgba(5,27,19,.30)), url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1800&q=90"); background-size: cover; background-position: center; }
+.hero-content { max-width: 1200px; width: 90%; margin: auto; padding: 100px 0; }
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 4px; font-size: 11px; font-weight: 700; margin-bottom: 20px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 7vw, 88px); line-height: 1.08; margin-bottom: 25px; }
+.hero h1 span { color: var(--gold); }
+.hero p { max-width: 600px; color: rgba(255,255,255,.88); font-size: 15px; line-height: 1.9; margin-bottom: 35px; }
+.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 16px 30px; font-size: 12px; font-weight: 700; letter-spacing: .5px; border-radius: 4px; transition: .3s; }
+.btn-primary { background: var(--gold); color: var(--dark); }
+.btn-secondary { border: 1px solid white; color: white; }
+.btn:hover { transform: translateY(-4px); }
+
+/* BENEFITS */
+.benefits { background: white; border-bottom: 1px solid var(--border); }
+.benefit-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 25px; padding: 30px 0; }
+.benefit { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.benefit-icon { font-size: 27px; }
+.benefit h3 { color: var(--green); font-size: 13px; }
+.benefit p { color: var(--grey); font-size: 11px; margin-top: 4px; }
+
+/* GENERAL SECTIONS */
+.section { padding: 100px 0; }
+.section-heading { text-align: center; margin-bottom: 55px; }
+.section-heading h2 { font-family: 'Playfair Display', serif; color: var(--green); font-size: clamp(30px, 4vw, 46px); margin-bottom: 15px; }
+.section-heading p { color: var(--grey); font-size: 13px; line-height: 1.8; }
+
+/* STORY */
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 65px; }
+.story-image { width: 100%; height: 440px; object-fit: cover; border-radius: 7px; }
+.story-text h2 { font-family: 'Playfair Display', serif; color: var(--green); font-size: 40px; line-height: 1.2; margin-bottom: 22px; }
+.story-text p { color: var(--grey); font-size: 13px; line-height: 2; margin-bottom: 20px; }
+
+/* PRODUCTS */
+.shop-section { background: #f0eee6; }
+.products { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+.card { background: white; border-radius: 7px; overflow: hidden; transition: .4s; border: 1px solid rgba(0,0,0,.03); }
+.card:hover { transform: translateY(-9px); box-shadow: 0 20px 45px rgba(0,0,0,.10); }
+.card-image { height: 260px; overflow: hidden; position: relative; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; transition: .5s; }
+.card:hover .card-image img { transform: scale(1.07); }
+.product-tag { position: absolute; top: 15px; left: 15px; background: var(--gold); color: var(--dark); padding: 7px 13px; font-size: 10px; font-weight: 700; border-radius: 30px; }
+.card-content { padding: 25px; }
+.product-category { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.card h3 { color: var(--green); font-size: 17px; margin: 10px 0; }
+.card-content p { color: var(--grey); font-size: 12px; line-height: 1.8; }
+.price { color: var(--green); font-size: 21px; font-weight: 800; margin-top: 20px; }
+
+/* PROMOTIONAL BANNER */
+.banner { text-align: center; color: white; padding: 115px 25px; background: linear-gradient(rgba(7,36,25,.89), rgba(7,36,25,.89)), url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=85"); background-position: center; background-size: cover; }
+.banner h2 { font-family: 'Playfair Display', serif; font-size: clamp(34px,5vw,55px); margin-bottom: 20px; }
+.banner p { max-width: 650px; margin: 0 auto 35px; color: #d9e1da; font-size: 14px; line-height: 1.9; }
+
+/* FEATURES */
+.features { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
+.feature { text-align: center; padding: 38px 20px; background: white; border: 1px solid var(--border); border-radius: 7px; transition: .3s; }
+.feature:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0,0,0,.07); }
+.feature-icon { font-size: 34px; margin-bottom: 18px; }
+.feature h3 { color: var(--green); font-size: 14px; margin-bottom: 12px; }
+.feature p { color: var(--grey); font-size: 11px; line-height: 1.8; }
+
+/* CTA */
+.cta { background: var(--green); color: white; text-align: center; padding: 95px 25px; }
+.cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px,5vw,49px); margin-bottom: 20px; }
+.cta p { max-width: 650px; margin: auto auto 35px; color: #d5e2d9; font-size: 13px; line-height: 1.9; }
+
+/* FOOTER */
+footer { background: #091f17; color: white; padding: 65px 0 25px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 45px; margin-bottom: 50px; }
+.footer-brand p { max-width: 360px; color: #aebdb4; font-size: 12px; line-height: 1.9; margin-top: 18px; }
+footer h3 { font-size: 14px; margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links a { color: #aebdb4; font-size: 12px; transition: .3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 23px; text-align: center; color: #aebdb4; font-size: 11px; }
+
+/* TOAST + CONFIRM MODAL - BUILT IN SO LOGOUT NEVER BREAKS */
+.toast { position: fixed; bottom: 90px; left: 50%; transform: translate(-50%, 20px); background: #111; color: #fff; padding: 13px 20px; border-radius: 30px; font-size: 14px; font-weight: 500; font-family: 'Poppins', sans-serif; z-index: 99999; opacity: 0; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-width: 90%; text-align: center; pointer-events: none; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.confirm-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 100000; display: flex; align-items: flex-end; justify-content: center; opacity: 0; transition: opacity 0.25s ease; }
+.confirm-overlay.show { opacity: 1; }
+.confirm-box { background: white; width: 100%; max-width: 420px; padding: 24px; border-radius: 22px 22px 0 0; font-family: 'Poppins', sans-serif; text-align: center; transform: translateY(100%); transition: transform 0.3s ease; }
+.confirm-overlay.show .confirm-box { transform: translateY(0); }
+.confirm-box h3 { font-size: 20px; margin-bottom: 8px; color: #222; }
+.confirm-box p { font-size: 14px; color: #666; margin-bottom: 20px; }
+.confirm-actions { display: flex; gap: 10px; }
+.confirm-actions button { flex: 1; padding: 14px; border-radius: 12px; border: none; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; }
+.confirm-cancel { background: #f1f1f1; color: #333; }
+.confirm-ok { background: #159447; color: white; }
+
+/* RESPONSIVE DESIGN */
+@media(max-width: 900px) {
+    .nav-links { gap: 15px; }
+    .products { grid-template-columns: repeat(2,1fr); }
+    .features { grid-template-columns: repeat(2,1fr); }
+    .story-grid { gap: 30px; }
+}
+@media(max-width: 700px) {
+    .nav-container { min-height: 75px; flex-wrap: wrap; padding: 15px 0; }
+    .nav-links { width: 100%; justify-content: center; gap: 13px; flex-wrap: wrap; padding-bottom: 5px; }
+    .nav-links a { font-size: 11px; }
+    .nav-shop { display: none; }
+    .logo { font-size: 20px; }
+    .hero { min-height: 570px; background-position: 60% center; }
+    .hero-content { padding: 80px 0; }
+    .hero p { font-size: 13px; }
+    .benefit-grid { grid-template-columns: 1fr; gap: 22px; }
+    .benefit { justify-content: flex-start; }
+    .section { padding: 70px 0; }
+    .story-grid { grid-template-columns: 1fr; }
+    .story-image { height: 290px; }
+    .story-text h2 { font-size: 33px; }
+    .products { grid-template-columns: 1fr; }
+    .card-image { height: 270px; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 35px; }
+}
+@media(max-width: 380px) {
+    .nav-links { gap: 9px; }
+    .nav-links a { font-size: 10px; }
+    .features { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 43px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">QUALITY GROCERIES • PREMIUM EXPERIENCE • MADE FOR MZANSI</div>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="nav-container">
+        <a href="#home" class="logo">Skhaftin<span>Express.</span></a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#story">Our Story</a>
+            <a href="#shop">Shop</a>
+            <a href="#features">Why Us</a>
+            <a href="Login.html" id="Logged">
+                <svg id="LoginIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 17l5-5-5-5"/>
+                    <path d="M20 12H9"/>
+                    <path d="M13 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/>
+                </svg>
+                <span id="LoginText">Log In</span>
+            </a>
+        </div>
+        <a href="Categories.html" class="nav-shop">SHOP NOW →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="eyebrow">A New Standard of Grocery Shopping</div>
+        <h1>Fresh Choices.<br><span>Premium Living.</span></h1>
+        <p>Welcome to SkhaftinExpress, Mzansi's premium grocery destination. Discover quality groceries, everyday essentials and delicious favourites, all in one convenient place.</p>
+        <div class="hero-buttons">
+            <a href="#shop" class="btn btn-primary">EXPLORE OUR STORE →</a>
+            <a href="#story" class="btn btn-secondary">DISCOVER OUR STORY</a>
+        </div>
+    </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+    <div class="container benefit-grid">
+        <div class="benefit"><div class="benefit-icon"></div><div><h3>Quality Selection</h3><p>Carefully selected products</p></div></div>
+        <div class="benefit"><div class="benefit-icon"></div><div><h3>Shopping Convenience</h3><p>Your everyday essentials in one place</p></div></div>
+        <div class="benefit"><div class="benefit-icon">🇿🇦</div><div><h3>Proudly Made for Mzansi</h3><p>Inspired by South African living</p></div></div>
+    </div>
+</section>
+
+<!-- STORY -->
+<section class="section" id="story">
+    <div class="container story-grid">
+        <img class="story-image" src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1000&q=85" alt="Fresh groceries and vegetables">
+        <div class="story-text">
+            <div class="eyebrow">Our Philosophy</div>
+            <h2>Rooted in Africa. Built for Tomorrow.</h2>
+            <p>SkhaftinExpress is dedicated to bringing quality groceries and everyday essentials to the people of Mzansi.</p>
+            <p>Our vision is to create a convenient shopping experience that connects customers with quality products, bringing together value, variety and modern convenience.</p>
+            <p>We believe that great shopping should be simple, accessible and enjoyable.</p>
+            <a href="#shop" class="btn btn-primary">EXPLORE OUR PRODUCTS →</a>
+        </div>
+    </div>
+</section>
+
+<!-- SHOP -->
+<section class="section shop-section" id="shop">
+    <div class="container">
+        <div class="section-heading">
+            <div class="eyebrow">The Skhaftin Collection</div>
+            <h2>Featured Collection</h2>
+            <p>Discover quality groceries and everyday essentials selected for your lifestyle.</p>
+        </div>
+        <div class="products">
+            <div class="card"><div class="card-image"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=85" alt="Fresh vegetables"><span class="product-tag">FRESH PICK</span></div><div class="card-content"><div class="product-category">Fresh Produce</div><h3>Fresh Vegetable Selection</h3><p>A colourful selection of fresh vegetables for everyday meals.</p><div class="price">R49.99</div></div></div>
+            <div class="card"><div class="card-image"><img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=800&q=85" alt="Fresh fruit"><span class="product-tag">POPULAR</span></div><div class="card-content"><div class="product-category">Fresh Produce</div><h3>Fresh Fruit Selection</h3><p>Delicious fruit favourites for healthy everyday living.</p><div class="price">R59.99</div></div></div>
+            <div class="card"><div class="card-image"><img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=800&q=85" alt="Natural honey"></div><div class="card-content"><div class="product-category">Pantry Essentials</div><h3>Premium Natural Honey</h3><p>A delicious pantry favourite for breakfast and recipes.</p><div class="price">R89.99</div></div></div>
+            <div class="card"><div class="card-image"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=85" alt="Coffee beans"></div><div class="card-content"><div class="product-category">Pantry Essentials</div><h3>Premium Coffee</h3><p>Bring a little luxury to your everyday coffee experience.</p><div class="price">R79.99</div></div></div>
+            <div class="card"><div class="card-image"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=85" alt="Orange juice"></div><div class="card-content"><div class="product-category">Drinks</div><h3>Fresh Orange Juice</h3><p>A refreshing drink to brighten every moment of your day.</p><div class="price">R39.99</div></div></div>
+            <div class="card"><div class="card-image"><img src="https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=800&q=85" alt="Pasta"></div><div class="card-content"><div class="product-category">Pantry Essentials</div><h3>Premium Pasta</h3><p>A versatile kitchen essential for delicious meals.</p><div class="price">R34.99</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROMOTIONAL BANNER -->
+<section class="banner">
+    <div class="eyebrow">The Mzansi Experience</div>
+    <h2>Culture. Quality. Convenience.</h2>
+    <p>SkhaftinExpress brings together quality groceries, everyday essentials and a modern shopping experience inspired by the people of South Africa.</p>
+    <a href="#shop" class="btn btn-primary">EXPLORE THE COLLECTION →</a>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-heading">
+            <div class="eyebrow">The Difference</div>
+            <h2>Why Choose SkhaftinExpress?</h2>
+            <p>More than groceries. A better shopping experience.</p>
+        </div>
+        <div class="features">
+            <div class="feature"><div class="feature-icon"></div><h3>Quality Products</h3><p>Carefully selected groceries and everyday essentials.</p></div>
+            <div class="feature"><div class="feature-icon"></div><h3>Premium Experience</h3><p>A modern shopping experience with attention to detail.</p></div>
+            <div class="feature"><div class="feature-icon"></div><h3>Everyday Convenience</h3><p>Find your favourite products in one convenient place.</p></div>
+            <div class="feature"><div class="feature-icon">🇿🇦</div><h3>Made for Mzansi</h3><p>Inspired by South African people, culture and lifestyle.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="cta" id="contact">
+    <div class="eyebrow">Welcome to SkhaftinExpress</div>
+    <h2>Your Shopping Experience Starts Here.</h2>
+    <p>Discover quality groceries and everyday essentials with a brand that understands the needs of Mzansi.</p>
+    <a href="#shop" class="btn btn-primary">EXPLORE OUR STORE →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color:white">Skhaftin<span>Express.</span></div>
+                <p>Mzansi's premium grocery destination. Quality products, everyday convenience and a better way to shop.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <div class="footer-links"><a href="#home">Home</a><a href="#story">Our Story</a><a href="#shop">Shop</a><a href="#features">Why Choose Us</a></div>
+            </div>
+            <div>
+                <h3>Customer Information</h3>
+                <div class="footer-links"><a href="#contact">Contact Us</a><a href="#shop">Our Products</a><a href="staff.html">Our Staff</a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 SkhaftinExpress. All Rights Reserved. Proudly made for Mzansi.</div>
+    </div>
+</footer>
+
+<script>
+// ===== LOGIN / LOGOUT - FIXED, SELF-CONTAINED =====
+let isLogged = sessionStorage.getItem("isLogged") === "true";
+
+function showToast(message) {
+    const old = document.querySelector(".toast");
+    if (old) old.remove();
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add("show"), 10);
+    setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+    }, 2500);
+}
+
+function showConfirmModal(message, onConfirm) {
+    const old = document.querySelector(".confirm-overlay");
+    if (old) old.remove();
+    const overlay = document.createElement("div");
+    overlay.className = "confirm-overlay";
+    overlay.innerHTML = `
+        <div class="confirm-box">
+            <h3>Log Out?</h3>
+            <p>${message}</p>
+            <div class="confirm-actions">
+                <button class="confirm-cancel">Cancel</button>
+                <button class="confirm-ok">Yes, Log Out</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    setTimeout(() => overlay.classList.add("show"), 10);
+    overlay.querySelector(".confirm-cancel").onclick = () => overlay.remove();
+    overlay.querySelector(".confirm-ok").onclick = () => { overlay.remove(); onConfirm(); };
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+}
+
+function UpdateLoginLink() {
+    let LoginLink = document.getElementById("Logged");
+    let LoginText = document.getElementById("LoginText");
+    let LoginIcon = document.getElementById("LoginIcon");
+    if (!LoginLink || !LoginText || !LoginIcon) return;
+    isLogged = sessionStorage.getItem("isLogged") === "true";
+    if (isLogged) {
+        LoginText.textContent = "Log Out";
+        LoginLink.href = "#";
+        LoginIcon.innerHTML = `<path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7"/>`;
+    } else {
+        LoginText.textContent = "Log In";
+        LoginLink.href = "Login.html";
+        LoginIcon.innerHTML = `<path d="M15 17l5-5-5-5"/><path d="M20 12H9"/><path d="M13 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/>`;
+    }
+}
+
+function doLogout() {
+    isLogged = false;
+    sessionStorage.removeItem("isLogged");
+    UpdateLoginLink();
+    showToast("You have successfully logged out!");
+}
+
+function Logout(event) {
+    if (event) event.preventDefault();
+    try {
+        showConfirmModal("You are logging out now, do you wish to proceed?", () => { doLogout(); });
+    } catch (err) {
+        if (confirm("You are logging out now, do you wish to proceed?")) { doLogout(); }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    UpdateLoginLink();
+    let LoginLink = document.getElementById("Logged");
+    if (LoginLink) {
+        LoginLink.addEventListener("click", function(event) {
+            if (sessionStorage.getItem("isLogged") === "true") {
+                Logout(event);
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
+

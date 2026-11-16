@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="login.css">
+
+    <title>SkhaftinExpress | Login</title>
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT -->
+    <div class="announcement">
+        QUALITY GROCERIES • PREMIUM EXPERIENCE • MADE FOR MZANSI
+    </div>
+
+    <!-- LOGIN HEADING -->
+    <h2 class="Login-Heading">
+        Login to Skhaftin<span>Express.</span>
+    </h2>
+
+    <!-- MAIN CONTAINER -->
+    <div class="Container">
+
+        <!-- MOTTO -->
+        <div class="Motto">
+            <h4>Our Promise to You</h4>
+            <p>GOOD FOOD. GREAT MOOD.</p>
+            <span>DELIVERED WITH LOVE.</span>
+        </div>
+
+        <!-- CUSTOMER DETAILS -->
+        <div class="customer-details">
+
+            <form>
+
+                <!-- USERNAME -->
+                <div class="input-group">
+
+                    <input type="text"
+                        id="UserName"
+                        placeholder=" "
+                        required>
+
+                    <label for="UserName">
+                        Please enter your name
+                    </label>
+
+                </div>
+
+                <p id="NameError" class="error-message"></p>
+
+
+                <!-- SURNAME -->
+                <div class="input-group">
+
+                    <input type="text"
+                        id="Surname"
+                        placeholder=" "
+                        required>
+
+                    <label for="Surname">
+                        Please enter your surname
+                    </label>
+
+                </div>
+
+                <p id="SurnameError" class="error-message"></p>
+
+
+                <!-- EMAIL -->
+                <div class="input-group">
+
+                    <input type="email"
+                        id="Email"
+                        placeholder=" "
+                        required>
+
+                    <label for="Email">
+                        Please enter your email
+                    </label>
+
+                </div>
+
+                <p id="EmailError" class="error-message"></p>
+
+
+                <!-- PHONE NUMBER -->
+                <div class="input-group">
+
+                    <input type="tel"
+                        id="Telephone"
+                        placeholder=" "
+                        required>
+
+                    <label for="Telephone">
+                        Valid South African phone number
+                    </label>
+
+                </div>
+
+                <p id="TelephoneError" class="error-message"></p>
+
+
+                <!-- AGE -->
+                <div class="input-group">
+
+                    <input type="number"
+                        id="Age"
+                        placeholder=" "
+                        required>
+
+                    <label for="Age">
+                        How old are you?
+                    </label>
+
+                </div>
+
+                <p id="AgeError" class="error-message"></p>
+
+
+                <!-- LOGIN BUTTON -->
+                <button onclick="ValidateData()"
+                    title="Click to validate details"
+                    id="validate-button"
+                    type="button">
+
+                    Login
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- DONATE4HOPE -->
+        <div class="Donate4Hope">
+
+            <p>
+                Please be a pal and donate R200 for hope.
+                DM @_tibrsa for more information.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="Login.js"></script>
+
+</body>
+
+</html>

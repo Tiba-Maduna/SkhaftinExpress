@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1f9b42;
+    /* Prevents iPhone horizontal scroll */
+    overflow-x: hidden;
+}
+
+/* ANNOUNCEMENT BAR */
+
+.announcement {
+    text-align: center;
+    color: white;
+    padding: 16px 15px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #013301;
+    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* LOGIN HEADING */
+
+.Login-Heading {
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #013301;
+    font-size: 36px;
+    margin: 35px 15px;
+    line-height: 1.2;
+}
+
+.Login-Heading span {
+    color: #F9A406;
+}
+
+/* MAIN FLEXBOX CONTAINER */
+
+.Container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 30px;
+    width: 95%;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 25px 35px;
+    border-radius: 12px;
+}
+
+/*  MOTTO SECTION - DARK GREEN */
+
+.Motto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #013301;
+    color: white;
+    padding: 60px 30px;
+    border-radius: 12px;
+    min-height: 280px;
+}
+
+.Motto h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+}
+
+.Motto p {
+    font-size: 50px;
+    font-weight: 800;
+    color: #F9A406;
+    line-height: 1.1;
+}
+
+/* CUSTOMER DETAILS - WARM CREAM */
+
+.customer-details {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 25px;
+    background-color: #cd9702;
+    border: 1px solid #03a2ad;
+    border-radius: 12px;
+}
+
+.customer-details form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    width: 100%;
+}
+
+/* INPUT GROUP */
+
+.input-group {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+}
+
+/*  INPUT FIELDS - 16px FIXES PHONE ZOOM */
+
+.input-group input {
+    width: 100%;
+    padding: 15px 12px;
+    margin: 0;
+    border: 1px solid #D8C7A8;
+    border-radius: 6px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    /* MUST be 16px or Phone will auto-zoom */
+    font-size: 16px;
+    background-color: #FFFFFF;
+    transition: 0.3s ease;
+    /* Removes Phone grey shadow / rounded corners */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/*  FLOATING LABELS */
+
+.input-group label {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 13px;
+    background-color: #FFFFFF;
+    padding: 0 5px;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: 0;
+    font-size: 11px;
+    color: #013301;
+}
+
+.input-group input:focus {
+    border: 2px solid #013301;
+}
+
+/* Error messages from JS */
+.input-group + span,
+#NameError, #SurnameError, #EmailError, #TelephoneError, #AgeError {
+    font-size: 12px;
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin-top: -14px;
+    text-align: left;
+}
+
+/* LOGIN BUTTON */
+
+#validate-button {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #013301;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    /* Makes button feel native on iPhone */
+    -webkit-tap-highlight-color: transparent;
+}
+
+#validate-button:hover {
+    background-color: #F9A406;
+    color: #013301;
+}
+
+#validate-button:active {
+    transform: scale(0.97);
+}
+
+/* DONATE4HOPE - ORANGE */
+
+.Donate4Hope {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.8;
+    background-color: #F9A406;
+    color: #013301;
+    padding: 60px 30px;
+    border-radius: 12px;
+    min-height: 280px;
+}
+
+.Donate4Hope p {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* TOAST - FOR JS showToast() */
+
+.toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: #111;
+    color: #fff;
+    padding: 13px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 90%;
+    text-align: center;
+    pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* CONFIRM MODAL - FOR JS showConfirmModal() */
+
+.confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 10000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.confirm-overlay.show { opacity: 1; }
+
+.confirm-box {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    border-radius: 22px 22px 0 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.confirm-overlay.show .confirm-box { transform: translateY(0); }
+
+.confirm-box h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #222;
+}
+.confirm-box p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+.confirm-actions {
+    display: flex;
+    gap: 10px;
+}
+.confirm-actions button {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+.confirm-cancel {
+    background: #f1f1f1;
+    color: #333;
+}
+.confirm-ok {
+    background: #159447;
+    color: white;
+}
+
+/* TABLET RESPONSIVENESS */
+
+@media (max-width: 900px) {
+    .Container {
+        gap: 20px;
+        padding: 20px;
+    }
+    .Motto,
+    .Donate4Hope {
+        padding: 40px 15px;
+    }
+    .customer-details {
+        padding: 30px 15px;
+    }
+    .Motto p {
+        font-size: 38px;
+    }
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 768px) {
+    .Container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        width: 94%;
+        padding: 0;
+        background: transparent;
+    }
+
+    .Motto {
+        width: 100%;
+        min-height: 180px;
+        padding: 35px 20px;
+        order: 1;
+    }
+
+    .Motto h4 {
+        font-size: 18px;
+    }
+
+    .Motto p {
+        font-size: 36px;
+    }
+
+    .customer-details {
+        width: 100%;
+        padding: 30px 20px;
+        order: 2;
+    }
+
+    .customer-details form {
+        gap: 22px;
+    }
+
+    .input-group {
+        max-width: 100%;
+    }
+
+    #validate-button {
+        max-width: 100%;
+    }
+
+    .Donate4Hope {
+        width: 100%;
+        min-height: 150px;
+        padding: 30px 20px;
+        order: 3;
+    }
+
+    .Login-Heading {
+        font-size: 26px;
+        margin: 25px 10px;
+    }
+
+    .announcement {
+        font-size: 10px;
+        padding: 14px 10px;
+        letter-spacing: 1px;
+    }
+}
+
+/* MOBILE  */
+
+@media (max-width: 430px) {
+    .Login-Heading {
+        font-size: 23px;
+    }
+
+    .Container {
+        width: 94%;
+        gap: 16px;
+    }
+
+    .Motto {
+        padding: 28px 16px;
+        min-height: 160px;
+    }
+
+    .Motto p {
+        font-size: 32px;
+    }
+
+    .customer-details {
+        padding: 25px 16px;
+    }
+
+    .Donate4Hope {
+        padding: 25px 16px;
+    }
+
+    .Donate4Hope p {
+        font-size: 14px;
+    }
+}

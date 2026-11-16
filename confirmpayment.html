@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirm Payment | SkhaftinExpress</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+    --green: #103b2e;
+    --green-light: #1b5942;
+    --gold: #c9a85b;
+    --cream: #f8f6ef;
+    --white: #ffffff;
+    --dark: #171c18;
+    --grey: #777d76;
+    --border: #e8e5dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); }
+a { text-decoration: none; color: inherit; }
+.container { width: min(1200px, 90%); margin: auto; }
+
+/* ANNOUNCEMENT */
+.announcement { background: var(--green); color: white; text-align: center; padding: 10px; font-size: 11px; letter-spacing: 2px; font-weight: 500; }
+
+/* NAV  */
+nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.97); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+.nav-container { max-width: 1300px; width: 92%; margin: auto; min-height: 82px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.logo { font-size: 23px; font-weight: 800; color: var(--green); letter-spacing: -1px; }
+.logo span { color: var(--gold); }
+
+/* PAGE */
+.page { max-width: 520px; width: 92%; margin: auto; padding: 50px 0 60px; }
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 4px; font-size: 11px; font-weight: 700; margin-bottom: 12px; text-align: center; }
+.page h1 { font-family: 'Playfair Display', serif; color: var(--green); font-size: clamp(32px, 5vw, 44px); text-align: center; margin-bottom: 12px; }
+.page > p { text-align: center; color: var(--grey); font-size: 13px; line-height: 1.8; margin-bottom: 35px; }
+
+/* DEMO NEDBANK CARD - in  green/gold */
+.demo-card { background: linear-gradient(135deg, var(--green) 0%, #091f17 100%); color: white; border-radius: 7px; padding: 22px; margin-bottom: 30px; box-shadow: 0 20px 45px rgba(0,0,0,.12); position: relative; overflow: hidden; }
+.demo-card::after { content: ""; position: absolute; right: -30px; top: -30px; width: 140px; height: 140px; background: rgba(201,168,91,.25); border-radius: 50%; }
+.demo-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 2; }
+.demo-top b { font-size: 18px; letter-spacing: .5px; }
+.demo-top span { font-size: 10px; background: var(--gold); color: var(--dark); padding: 5px 10px; border-radius: 30px; font-weight: 700; }
+.demo-chip { width: 42px; height: 30px; background: var(--gold); border-radius: 4px; margin: 18px 0 12px; }
+.demo-number { font-size: 19px; letter-spacing: 2px; font-weight: 600; margin-bottom: 16px; position: relative; z-index: 2; }
+.demo-bottom { display: flex; justify-content: space-between; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #d9e1da; position: relative; z-index: 2; }
+.demo-bottom strong { display: block; font-size: 13px; letter-spacing: 1px; margin-top: 3px; color: white; }
+
+/* FORM  */
+.form-card { background: white; border: 1px solid var(--border); border-radius: 7px; padding: 28px; }
+.row { display: flex; gap: 14px; }
+.field { flex: 1; margin-bottom: 18px; }
+.field label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .5px; margin-bottom: 8px; color: var(--green); text-transform: uppercase; }
+.field input, .field select { width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 4px; background: white; font-size: 14px; font-family: 'Poppins', sans-serif; outline: none; }
+.field input:focus, .field select:focus { border-color: var(--gold); }
+.summary { border-top: 1px dashed var(--border); margin-top: 6px; padding-top: 16px; }
+.summary-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; color: var(--grey); }
+.summary-row.total { font-weight: 800; font-size: 18px; color: var(--dark); }
+.summary-row.total span:last-child { color: var(--green); }
+.btn { display: block; width: 100%; text-align: center; padding: 16px 30px; font-size: 12px; font-weight: 700; letter-spacing: .5px; border-radius: 4px; border: none; cursor: pointer; transition: .3s; }
+.btn-primary { background: var(--gold); color: var(--dark); }
+.btn-primary:hover { transform: translateY(-2px); }
+.back-link { display: block; text-align: center; margin-top: 16px; color: var(--grey); font-size: 12px; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translate(-50%, 20px); background: var(--dark); color: #fff; padding: 13px 20px; border-radius: 4px; font-size: 13px; font-weight: 500; z-index: 99999; opacity: 0; transition: all 0.3s ease; max-width: 90%; text-align: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* FOOTER */
+footer { background: #091f17; color: white; padding: 65px 0 25px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 45px; margin-bottom: 50px; }
+.footer-brand p { max-width: 360px; color: #aebdb4; font-size: 12px; line-height: 1.9; margin-top: 18px; }
+footer h3 { font-size: 14px; margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links a { color: #aebdb4; font-size: 12px; transition: .3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 23px; text-align: center; color: #aebdb4; font-size: 11px; }
+@media(max-width: 700px){ .footer-grid { grid-template-columns: 1fr; gap: 35px; } .row { flex-direction: column; gap: 0; } }
+</style>
+</head>
+<body>
+
+<div class="announcement">QUALITY GROCERIES • PREMIUM EXPERIENCE • MADE FOR MZANSI</div>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Skhaftin<span>Express.</span></a>
+    <a href="Categories.html" style="font-size:12px;font-weight:700;">← BACK TO SHOP</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="eyebrow">Secure Checkout</div>
+  <h1>Confirm Payment</h1>
+  <p>Review your card details to continue to delivery address.</p>
+
+  <div class="demo-card">
+    <div class="demo-top"><b>Nedbank</b><span>DEMO CARD</span></div>
+    <div class="demo-chip"></div>
+    <div class="demo-number" id="previewNumber">•••• •••• •••• ••••</div>
+    <div class="demo-bottom">
+      <div>CARD HOLDER<span><strong id="previewBank">SKHAFTIN EXPRESS</strong></span></div>
+      <div>EXPIRES<span><strong id="previewExp">03/30</strong></span></div>
+      <div>CVC<span><strong id="previewCvc">•••</strong></span></div>
+    </div>
+  </div>
+
+  <form class="form-card" id="payForm">
+    <div class="row">
+      <div class="field">
+        <label>Bank Name</label>
+        <select id="bankName" required>
+          <option value="">Select a bank</option>
+          <option>Nedbank</option><option>Capitec</option><option>FNB</option>
+          <option>Standard Bank</option><option>Absa</option><option>TymeBank</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Account type</label>
+        <select id="accountType"><option>Main acc</option><option>Savings acc</option><option>Cheque acc</option></select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Card Number</label>
+      <input type="text" id="cardNumber" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" required>
+    </div>
+    <div class="row">
+      <div class="field"><label>CVC</label><input type="text" id="cvc" inputmode="numeric" maxlength="3" placeholder="123" required></div>
+      <div class="field"><label>Exp date</label><input type="text" id="expDate" inputmode="numeric" maxlength="5" placeholder="03/30" required></div>
+    </div>
+    <div class="summary">
+      <div class="summary-row"><span>Items</span><span id="payItems">0 items</span></div>
+      <div class="summary-row total"><span>Total to pay</span><span id="payTotal">R0.00</span></div>
+    </div>
+    <button type="submit" class="btn btn-primary">PROCEED TO PAYMENT →</button>
+    <a class="back-link" href="Categories.html">← Back to Basket</a>
+  </form>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color:white">Skhaftin<span>Express.</span></div>
+                <p>Mzansi's premium grocery destination. Quality products, everyday convenience and a better way to shop.</p>
+            </div>
+            </div>
+            <div>
+               
+            </div>
+        </div>
+        <div class="footer-bottom">©️ 2026 SkhaftinExpress. All Rights Reserved. Proudly made for Mzansi.</div>
+    </div>
+</footer>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem("skhaftin_cart") || "{}");
+  let items = 0, total = 0;
+  Object.values(cart).forEach(i => { items += i.quantity; total += i.price * i.quantity; });
+  document.getElementById("payItems").textContent = items + " item" + (items !== 1 ? "s" : "");
+  document.getElementById("payTotal").textContent = "R" + total.toFixed(2);
+  function showToast(msg){
+    let t = document.querySelector(".toast"); if(t) t.remove();
+    t = document.createElement("div"); t.className = "toast"; t.textContent = msg;
+    document.body.appendChild(t); setTimeout(()=> t.classList.add("show"), 10);
+    setTimeout(()=> { t.classList.remove("show"); setTimeout(()=> t.remove(), 300); }, 2500);
+  }
+  const cardInput = document.getElementById("cardNumber");
+  cardInput.addEventListener("input", () => {
+    let v = cardInput.value.replace(/\D/g, "").slice(0,16);
+    cardInput.value = v.replace(/(\d{4})(?=\d)/g, "$1 ");
+    document.getElementById("previewNumber").textContent = (cardInput.value || "•••• •••• •••• ••••");
+  });
+  document.getElementById("cvc").addEventListener("input", e => {
+    e.target.value = e.target.value.replace(/\D/g, "").slice(0,3);
+    document.getElementById("previewCvc").textContent = e.target.value || "•••";
+  });
+  document.getElementById("expDate").addEventListener("input", e => {
+    let v = e.target.value.replace(/\D/g, "").slice(0,4);
+    if(v.length > 2) v = v.slice(0,2) + "/" + v.slice(2);
+    e.target.value = v;
+    document.getElementById("previewExp").textContent = v || "03/30";
+  });
+  document.getElementById("bankName").addEventListener("change", e => {
+    document.getElementById("previewBank").textContent = (e.target.value || "SKHAFTIN EXPRESS").toUpperCase();
+  });
+  document.getElementById("payForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    if(items === 0){ showToast("Your basket is empty!"); return; }
+    if(cardInput.value.replace(/\s/g,"").length !== 16){ showToast("Card number must be 16 digits"); return; }
+    if(document.getElementById("cvc").value.length !== 3){ showToast("CVC must be 3 digits"); return; }
+    showToast("Payment confirmed! Now confirm your address...");
+    localStorage.setItem("skhaftin_last_payment", JSON.stringify({ bank: document.getElementById("bankName").value, accountType: document.getElementById("accountType").value, total, items, date: new Date().toLocaleString() }));
+    setTimeout(()=> window.location.href = "confirmaddress.html", 1200);
+  });
+</script>
+</body>
+</html>

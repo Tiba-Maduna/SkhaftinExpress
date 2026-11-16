@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirm Address | SkhaftinExpress</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+    --green: #103b2e;
+    --green-light: #1b5942;
+    --gold: #c9a85b;
+    --cream: #f8f6ef;
+    --white: #ffffff;
+    --dark: #171c18;
+    --grey: #777d76;
+    --border: #e8e5dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); }
+a { text-decoration: none; color: inherit; }
+.container { width: min(1200px, 90%); margin: auto; }
+
+/* ANNOUNCEMENT */
+.announcement { background: var(--green); color: white; text-align: center; padding: 10px; font-size: 11px; letter-spacing: 2px; font-weight: 500; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.97); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+.nav-container { max-width: 1300px; width: 92%; margin: auto; min-height: 82px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.logo { font-size: 23px; font-weight: 800; color: var(--green); letter-spacing: -1px; }
+.logo span { color: var(--gold); }
+
+/* PAGE */
+.page { max-width: 520px; width: 92%; margin: auto; padding: 50px 0 60px; }
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 4px; font-size: 11px; font-weight: 700; margin-bottom: 12px; text-align: center; }
+.page h1 { font-family: 'Playfair Display', serif; color: var(--green); font-size: clamp(32px, 5vw, 44px); text-align: center; margin-bottom: 12px; }
+.page > p { text-align: center; color: var(--grey); font-size: 13px; line-height: 1.8; margin-bottom: 35px; }
+
+/* PROGRESS - Cart > Payment > Address > Receipt */
+.progress { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 30px; font-size: 11px; font-weight: 600; letter-spacing: .5px; }
+.progress span { color: var(--grey); }
+.progress span.done { color: var(--green); }
+.progress span.active { color: var(--green); background: white; border: 1px solid var(--gold); padding: 5px 10px; border-radius: 30px; }
+.progress i { color: var(--gold); font-style: normal; }
+
+/* FORM */
+.form-card { background: white; border: 1px solid var(--border); border-radius: 7px; padding: 28px; }
+.row { display: flex; gap: 14px; }
+.field { flex: 1; margin-bottom: 18px; }
+.field label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .5px; margin-bottom: 8px; color: var(--green); text-transform: uppercase; }
+.field input, .field select, .field textarea { width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 4px; background: white; font-size: 14px; font-family: 'Poppins', sans-serif; outline: none; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); }
+.section-label { font-family: 'Playfair Display', serif; color: var(--green); font-size: 19px; margin: 8px 0 16px; }
+.delivery-options { display: flex; gap: 10px; margin-bottom: 18px; }
+.delivery-opt { flex: 1; border: 1px solid var(--border); border-radius: 4px; padding: 14px 10px; text-align: center; cursor: pointer; transition: .3s; }
+.delivery-opt input { display: none; }
+.delivery-opt b { display: block; font-size: 13px; color: var(--green); }
+.delivery-opt small { font-size: 11px; color: var(--grey); }
+.delivery-opt:has(input:checked) { border-color: var(--gold); background: #fdfaf2; }
+.summary { border-top: 1px dashed var(--border); margin-top: 6px; padding-top: 16px; }
+.summary-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; color: var(--grey); }
+.summary-row.total { font-weight: 800; font-size: 18px; color: var(--dark); }
+.summary-row.total span:last-child { color: var(--green); }
+.btn { display: block; width: 100%; text-align: center; padding: 16px 30px; font-size: 12px; font-weight: 700; letter-spacing: .5px; border-radius: 4px; border: none; cursor: pointer; transition: .3s; }
+.btn-primary { background: var(--gold); color: var(--dark); }
+.btn-primary:hover { transform: translateY(-2px); }
+.back-link { display: block; text-align: center; margin-top: 16px; color: var(--grey); font-size: 12px; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translate(-50%, 20px); background: var(--dark); color: #fff; padding: 13px 20px; border-radius: 4px; font-size: 13px; font-weight: 500; z-index: 99999; opacity: 0; transition: all 0.3s ease; max-width: 90%; text-align: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* FOOTER  */
+footer { background: #091f17; color: white; padding: 65px 0 25px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 45px; margin-bottom: 50px; }
+.footer-brand p { max-width: 360px; color: #aebdb4; font-size: 12px; line-height: 1.9; margin-top: 18px; }
+footer h3 { font-size: 14px; margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links a { color: #aebdb4; font-size: 12px; transition: .3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 23px; text-align: center; color: #aebdb4; font-size: 11px; }
+@media(max-width: 700px){ .footer-grid { grid-template-columns: 1fr; gap: 35px; } .row { flex-direction: column; gap: 0; } .delivery-options { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<div class="announcement">QUALITY GROCERIES - PREMIUM EXPERIENCE - MADE FOR MZANSI</div>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Skhaftin<span>Express.</span></a>
+    <a href="confirmpayment.html" style="font-size:12px;font-weight:700;">BACK TO PAYMENT</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="eyebrow">Almost There</div>
+  <h1>Confirm Address</h1>
+  <p>Where should we deliver your Skhaftin?</p>
+
+  <div class="progress">
+    <span class="done">CART</span><i>></i>
+    <span class="done">PAYMENT</span><i>></i>
+    <span class="active">ADDRESS</span><i>></i>
+    <span>RECEIPT</span>
+  </div>
+
+  <form class="form-card" id="addressForm">
+    <div class="section-label">Delivery Details</div>
+
+    <div class="field">
+      <label>Full Name</label>
+      <input type="text" id="fullName" placeholder="e.g. Thabo Mokoena" required>
+    </div>
+    <div class="field">
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="e.g. 082 123 4567" required>
+    </div>
+    <div class="field">
+      <label>Street Address</label>
+      <input type="text" id="street" placeholder="e.g. 12 Main Street" required>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label>Suburb</label>
+        <input type="text" id="suburb" placeholder="e.g. Krugersdorp" required>
+      </div>
+      <div class="field">
+        <label>Postal Code</label>
+        <input type="text" id="postal" inputmode="numeric" placeholder="1739" required>
+      </div>
+    </div>
+
+    <div class="section-label">Delivery Option</div>
+    <div class="delivery-options">
+      <label class="delivery-opt">
+        <input type="radio" name="delivery" value="Standard Delivery - R60" checked>
+        <b>Standard</b><small>Same day - R60.00</small>
+      </label>
+      <label class="delivery-opt">
+        <input type="radio" name="delivery" value="Express Delivery - R150">
+        <b>Express</b><small>Within 1 hour - R150.00</small>
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Delivery Instructions (Optional)</label>
+      <textarea id="notes" rows="2" placeholder="e.g. Leave at gate, call on arrival"></textarea>
+    </div>
+
+    <div class="summary">
+      <div class="summary-row"><span>Items</span><span id="addrItems">0 items</span></div>
+      <div class="summary-row"><span>Delivery</span><span id="deliveryFee">R60.00</span></div>
+      <div class="summary-row total"><span>Total to pay</span><span id="addrTotal">R0.00</span></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">CONFIRM ORDER - VIEW RECEIPT</button>
+    <a class="back-link" href="confirmpayment.html">Back to Payment</a>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color:white">Skhaftin<span>Express.</span></div>
+                <p>Mzansi's premium grocery destination. Quality products, everyday convenience and a better way to shop.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#story">Our Story</a>
+                    <a href="index.html#shop">Shop</a>
+                    <a href="index.html#features">Why Choose Us</a>
+                </div>
+            </div>
+            <div>
+                <h3>Customer Information</h3>
+                <div class="footer-links">
+                    <a href="index.html#contact">Contact Us</a>
+                    <a href="index.html#shop">Our Products</a>
+                    <a href="index.html#contact">Delivery Information</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">(c) 2026 SkhaftinExpress. All Rights Reserved. Proudly made for Mzansi.</div>
+    </div>
+</footer>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem("skhaftin_cart") || "{}");
+  const payment = JSON.parse(localStorage.getItem("skhaftin_last_payment") || "{}");
+  let items = 0, total = 0;
+  Object.values(cart).forEach(i => { items += i.quantity; total += i.price * i.quantity; });
+
+  function updateTotals(){
+    const delivery = document.querySelector('input[name="delivery"]:checked').value;
+    // FIXED PRICES: Standard R60, Express R150
+    const fee = delivery.includes("150") ? 150 : 60;
+    document.getElementById("addrItems").textContent = items + " item" + (items !== 1 ? "s" : "");
+    document.getElementById("deliveryFee").textContent = "R" + fee.toFixed(2);
+    document.getElementById("addrTotal").textContent = "R" + (total + fee).toFixed(2);
+    return fee;
+  }
+  document.querySelectorAll('input[name="delivery"]').forEach(r => r.addEventListener("change", updateTotals));
+  updateTotals();
+
+  function showToast(msg){
+    let t = document.querySelector(".toast"); if(t) t.remove();
+    t = document.createElement("div"); t.className = "toast"; t.textContent = msg;
+    document.body.appendChild(t); setTimeout(()=> t.classList.add("show"), 10);
+    setTimeout(()=> { t.classList.remove("show"); setTimeout(()=> t.remove(), 300); }, 2500);
+  }
+
+  document.getElementById("addressForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fee = updateTotals();
+    const address = {
+      name: document.getElementById("fullName").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      street: document.getElementById("street").value.trim(),
+      suburb: document.getElementById("suburb").value.trim(),
+      postal: document.getElementById("postal").value.trim(),
+      notes: document.getElementById("notes").value.trim(),
+      deliveryOption: document.querySelector('input[name="delivery"]:checked').value,
+      deliveryFee: fee
+    };
+    localStorage.setItem("skhaftin_last_address", JSON.stringify(address));
+    localStorage.setItem("skhaftin_last_order", JSON.stringify({ cart, total: total + fee, subtotal: total, deliveryFee: fee, items, payment, address, date: new Date().toLocaleString() }));
+    showToast("Order confirmed! Loading your receipt...");
+    setTimeout(()=> window.location.href = "receipt.html", 1200);
+  });
+</script>
+</body>
+</html>

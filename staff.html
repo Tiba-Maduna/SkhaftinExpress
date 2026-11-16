@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Staff | SkhaftinExpress</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --green: #103b2e; --green-light: #1b5942; --gold: #c9a85b; --cream: #f8f6ef; --white: #ffffff; --dark: #171c18; --grey: #777d76; --border: #e8e5dc; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); }
+a { text-decoration: none; color: inherit; }
+.container { width: min(1200px, 90%); margin: auto; }
+.announcement { background: var(--green); color: white; text-align: center; padding: 10px; font-size: 11px; letter-spacing: 2px; font-weight: 500; }
+nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.97); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+.nav-container { max-width: 1300px; width: 92%; margin: auto; min-height: 82px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 23px; font-weight: 800; color: var(--green); letter-spacing: -1px; }
+.logo span { color: var(--gold); }
+.page { max-width: 900px; width: 92%; margin: auto; padding: 50px 0 60px; }
+.page-title { text-align: center; margin-bottom: 40px; }
+.page-title h1 { font-family: 'Playfair Display', serif; color: var(--green); font-size: clamp(32px, 5vw, 44px); font-weight: 700; }
+.page-title .underline { width: 200px; height: 3px; background: var(--gold); margin: 10px auto 0; }
+.staff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.staff-card { background: white; border: 1px solid var(--border); border-radius: 7px; padding: 24px; display: flex; gap: 18px; align-items: flex-start; }
+.staff-card.featured { border: 2px solid var(--gold); background: #fdfaf2; }
+.photo-box { width: 72px; height: 72px; min-width: 72px; border: 2px solid var(--green); border-radius: 7px; background: var(--cream); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: var(--green); overflow: hidden; position: relative; }
+.photo-box img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+.staff-info h3 { font-size: 20px; color: var(--dark); line-height: 1.2; }
+.staff-info .role { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+.staff-info p { font-size: 12px; color: var(--grey); line-height: 1.7; margin-top: 10px; }
+.badge { display: inline-block; background: var(--green); color: white; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 5px 10px; border-radius: 30px; margin-top: 12px; }
+.badge.gold { background: var(--gold); color: var(--dark); }
+.section-label { font-family: 'Playfair Display', serif; color: var(--green); font-size: 24px; margin: 45px 0 18px; text-align: center; }
+.section-sub { text-align: center; color: var(--grey); font-size: 12px; margin-bottom: 18px; }
+.eng-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.eng-card { background: white; border: 1px solid var(--border); border-radius: 7px; padding: 18px; display: flex; gap: 14px; align-items: flex-start; }
+.card-photo { width: 56px; height: 56px; min-width: 56px; border: 2px solid var(--green); border-radius: 7px; background: var(--cream); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: var(--green); overflow: hidden; position: relative; }
+.card-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+.eng-card h3 { font-size: 14px; color: var(--green); }
+.eng-card .role { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin: 4px 0 8px; }
+.eng-card p { font-size: 12px; color: var(--grey); line-height: 1.7; }
+.eng-card .name { font-size: 12px; font-weight: 600; color: var(--dark); margin-top: 10px; }
+.btn { display: block; width: 100%; max-width: 320px; margin: 35px auto 0; text-align: center; padding: 16px 30px; font-size: 12px; font-weight: 700; letter-spacing: .5px; border-radius: 4px; border: none; cursor: pointer; background: var(--gold); color: var(--dark); }
+footer { background: #091f17; color: white; padding: 65px 0 25px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 45px; margin-bottom: 50px; }
+.footer-brand p { max-width: 360px; color: #aebdb4; font-size: 12px; line-height: 1.9; margin-top: 18px; }
+footer h3 { font-size: 14px; margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links a { color: #aebdb4; font-size: 12px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 23px; text-align: center; color: #aebdb4; font-size: 11px; }
+@media(max-width: 700px){ .staff-row, .eng-grid, .footer-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="announcement">QUALITY GROCERIES - PREMIUM EXPERIENCE - MADE FOR MZANSI</div>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Skhaftin<span>Express.</span></a>
+    <a href="categories.html" style="font-size:12px;font-weight:700;">BACK TO SHOP</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-title">
+    <h1>Our Staff</h1>
+    <div class="underline"></div>
+  </div>
+
+  <!-- LEADERSHIP -->
+  <div class="staff-row">
+    <div class="staff-card featured">
+      <div class="photo-box">TM<img src="images/tiba-maduna.jpg" alt="Tiba Maduna" onerror="this.style.display='none'"></div>
+      <div class="staff-info">
+        <h3>Tiba Maduna</h3>
+        <div class="role">Founder & CEO</div>
+        <p>Founder of SkhaftinExpress. Oversees the full business, strategy and all departments.</p>
+        <span class="badge gold">FOUNDER</span>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="photo-box">SK<img src="images/sihe-khubone.jpg" alt="Sihe Khubone" onerror="this.style.display='none'"></div>
+      <div class="staff-info">
+        <h3>Sihe Khubone</h3>
+        <div class="role">Head of Transport</div>
+        <p>Head of Transport. Runs all deliveries, drivers, routes and makes sure orders arrive on time.</p>
+        <span class="badge">HEAD OF TRANSPORT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSPORT & LOGISTICS -->
+  <div class="section-label">Transport & Logistics</div>
+  <p class="section-sub">Under Sihe Khubone - Head of Transport</p>
+  <div class="eng-grid">
+    <div class="eng-card">
+      <div class="card-photo">AZ<img src="images/azile.jpg" alt="Azile" onerror="this.style.display='none'"></div>
+      <div><h3>Logistics Officer</h3><div class="role">Logistics</div><p>Plans routes, schedules drivers and tracks deliveries. Makes sure every order moves on time.</p><div class="name">Name: Azile</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">JR<img src="images/joshua-rangasamy.jpg" alt="Joshua Rangasamy" onerror="this.style.display='none'"></div>
+      <div><h3>Field / Mobile Engineer</h3><div class="role">Field Service</div><p>Mobile engineer. Roadside help, on-site repairs and emergency call-outs.</p><div class="name">Name: Joshua Rangasamy</div></div>
+    </div>
+  </div>
+
+  <!-- ENGINEERING / MECHANICAL -->
+  <div class="section-label">Engineering Team</div>
+  <p class="section-sub">Mechanical Department - Led by Kwanda Buthelezi</p>
+  <div class="eng-grid">
+    <div class="eng-card">
+      <div class="card-photo">KB<img src="images/kwanda-buthelezi.jpg" alt="Kwanda Buthelezi" onerror="this.style.display='none'"></div>
+      <div><h3>Lead Mechanical Engineer</h3><div class="role">Mechanical - Head</div><p>Head of Mechanical Department. Leads all mechanical repairs, services and quality checks.</p><div class="name">Name: Kwanda Buthelezi</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">SN<img src="images/sphamandla-nsele.jpg" alt="Sphamandla Nsele" onerror="this.style.display='none'"></div>
+      <div><h3>Diagnostic Engineer</h3><div class="role">Diagnostics</div><p>Finds faults fast using diagnostic tools - engines, sensors and electrical faults.</p><div class="name">Name: Sphamandla Nsele</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">KL<img src="images/khaohelo-lebeko.jpg" alt="Khaohelo Lebeko" onerror="this.style.display='none'"></div>
+      <div><h3>Civil Engineer</h3><div class="role">Civil</div><p>Handles civil work - structures, workshop facilities, site work and infrastructure for SkhaftinExpress.</p><div class="name">Name: Khaohelo Lebeko</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">MJ<img src="images/mikey-jamz.jpg" alt="Mikey Jamz" onerror="this.style.display='none'"></div>
+      <div><h3>Electrical Engineer</h3><div class="role">Electrical</div><p>Wiring, batteries, alternators, starters and all vehicle electronics.</p><div class="name">Name: Mikey Jamz</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">LC<img src="images/luvuyo-cele.jpg" alt="Luvuyo Cele" onerror="this.style.display='none'"></div>
+      <div><h3>Suspension & Brakes Engineer</h3><div class="role">Suspension / Brakes</div><p>Brakes, shocks, suspension, wheel alignment and safety systems.</p><div class="name">Name: Luvuyo Cele</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>Engine Specialist</h3><div class="role">Engines</div><p>Specialist in petrol and diesel engines. Rebuilds, services and tunes engines.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">NK<img src="images/nkululeko-khoza.jpg" alt="Nkululeko Khoza" onerror="this.style.display='none'"></div>
+      <div><h3>Fleet Maintenance Engineer</h3><div class="role">Fleet</div><p>Keeps all delivery vehicles roadworthy. Services, inspections and breakdown support for drivers.</p><div class="name">Name: Nkululeko Khoza</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">SN<img src="images/samkelo-ndlovu.jpg" alt="Samkelo Ndlovu" onerror="this.style.display='none'"></div>
+      <div><h3>Quality Control Engineer</h3><div class="role">Quality Control</div><p>Checks every job before it leaves the workshop.</p><div class="name">Name: Samkelo Ndlovu</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">UN<img src="images/unam-njoti.jpg" alt="Unam Njoti" onerror="this.style.display='none'"></div>
+      <div><h3>Apprentice / Junior Engineer</h3><div class="role">Junior</div><p>Learns under senior engineers. Assists with services and workshop duties.</p><div class="name">Name: Unam Njoti</div></div>
+    </div>
+  </div>
+
+  <!-- IT TEAM -->
+  <div class="section-label">IT Team</div>
+  <p class="section-sub">Systems, website, orders, QR receipts and PINs</p>
+  <div class="eng-grid">
+    <div class="eng-card">
+      <div class="card-photo">LM<img src="images/lindokuhle-msithini.jpg" alt="Lindokuhle Msithini" onerror="this.style.display='none'"></div>
+      <div><h3>IT Manager / Lead Developer</h3><div class="role">IT - Head</div><p>Leads the IT team. Builds and maintains SkhaftinExpress systems.</p><div class="name">Name: Lindokuhle Msithini</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">KM<img src="images/khaya-mathebula.jpg" alt="Khaya Mathebula" onerror="this.style.display='none'"></div>
+      <div><h3>Software / Systems Engineer</h3><div class="role">Software</div><p>Website, orders, QR receipts, PINs and delivery tracking.</p><div class="name">Name: Khaya Mathebula</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">MN<img src="images/maphindha-ngobeni.jpg" alt="Maphindha Ngobeni" onerror="this.style.display='none'"></div>
+      <div><h3>IT Support Engineer</h3><div class="role">Support</div><p>Supports staff with devices, network, printers and system issues.</p><div class="name">Name: Maphindha Ngobeni</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">LV<img src="images/lihle-valantiya.jpg" alt="Lihle Valantiya" onerror="this.style.display='none'"></div>
+      <div><h3>IT Support Engineer</h3><div class="role">Support</div><p>Helps with accounts, passwords, delivery app and order system.</p><div class="name">Name: Lihle Valantiya</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">LM<img src="images/lerato-mollo.jpg" alt="Lerato Mollo" onerror="this.style.display='none'"></div>
+      <div><h3>IT Support / Data Engineer</h3><div class="role">Data</div><p>Manages data, backups and reports from the order system.</p><div class="name">Name: Lerato Mollo</div></div>
+    </div>
+  </div>
+
+  <!-- ACCOUNTING & FINANCE - 15 ROLES -->
+  <div class="section-label">Accounting & Finance - 15 Roles</div>
+  <p class="section-sub">The money team - they handle payments, salaries and budgets</p>
+  <div class="eng-grid">
+    <div class="eng-card">
+      <div class="card-photo">ON<img src="images/oshea-ngema.jpg" alt="Oshea Ngema" onerror="this.style.display='none'"></div>
+      <div><h3>1. Finance Manager</h3><div class="role">Finance - Head</div><p>Head of Finance. Controls budgets, cash flow, pricing and reports to the Founder.</p><div class="name">Name: Oshea Ngema</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">MN<img src="images/muhle-ntombela.jpg" alt="Muhle Ntombela" onerror="this.style.display='none'"></div>
+      <div><h3>2. Accounting Manager</h3><div class="role">Accounting - Head</div><p>Head of Accounting. Runs the full accounts - invoices, receipts, expenses and month-end reports.</p><div class="name">Name: Muhle Ntombela</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">PN<img src="images/phila-nxele.jpg" alt="Phila Nxele" onerror="this.style.display='none'"></div>
+      <div><h3>3. Payroll Manager</h3><div class="role">Payroll</div><p>Pays all staff on time. Handles salaries, overtime, bonuses and payslips.</p><div class="name">Name: Phila Nxele</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>4. Bookkeeper / Accounts Assistant</h3><div class="role">Bookkeeping</div><p>Records daily sales, delivery fees (R60 / R150), and expenses.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>5. Budget & Cost Analyst</h3><div class="role">Budgeting</div><p>Tracks where money goes - fuel, parts, stock, salaries. Finds ways to save money.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>6. Cashier / Payments Officer</h3><div class="role">Payments</div><p>Handles customer payments, refunds, and confirms orders are paid before delivery.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>7. Accounts Payable Manager</h3><div class="role">Payable</div><p>Pays suppliers, landlords and service providers on time.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>8. Accounts Receivable Manager</h3><div class="role">Receivable</div><p>Collects money owed to SkhaftinExpress. Follows up on unpaid orders.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>9. Tax & Compliance Officer</h3><div class="role">Tax</div><p>Handles SARS, VAT, tax returns and makes sure SkhaftinExpress follows all legal rules.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>10. Internal Auditor</h3><div class="role">Audit</div><p>Checks the books, receipts and payments for mistakes or fraud.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>11. Financial Analyst</h3><div class="role">Analysis</div><p>Studies sales, delivery fees and costs. Tells the Founder what is making money.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>12. Credit Controller</h3><div class="role">Credit</div><p>Manages customers who buy on credit. Sets credit limits and follows up late payments.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>13. Procurement Finance Officer</h3><div class="role">Procurement</div><p>Handles money for stock buying - groceries, parts, fuel. Compares supplier prices.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>14. Bank & Treasury Officer</h3><div class="role">Banking</div><p>Manages bank accounts, card payments, cash deposits and petty cash.</p><div class="name">Name: To be filled</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>15. Finance Assistant / Intern</h3><div class="role">Assistant</div><p>Learns under the Finance Manager. Helps with filing, data entry and receipts.</p><div class="name">Name: To be filled</div></div>
+    </div>
+  </div>
+
+  <!-- MARKETING -->
+  <div class="section-label">Marketing</div>
+  <p class="section-sub">Gets SkhaftinExpress known</p>
+  <div class="eng-grid">
+    <div class="eng-card">
+      <div class="card-photo">WG<img src="images/welile-gwala.jpg" alt="Welile Gwala" onerror="this.style.display='none'"></div>
+      <div><h3>Marketing Manager</h3><div class="role">Marketing - Head</div><p>Runs all marketing, social media, promos and brings in new customers.</p><div class="name">Name: Welile Gwala</div></div>
+    </div>
+    <div class="eng-card">
+      <div class="card-photo">--<img src="images/placeholder.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div><h3>Social Media / Content Officer</h3><div class="role">Marketing</div><p>Posts, videos and customer updates for SkhaftinExpress.</p><div class="name">Name: To be filled</div></div>
+    </div>
+  </div>
+
+  <button class="btn" onclick="window.location.href='categories.html'">BACK TO CATEGORIES</button>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color:white">Skhaftin<span>Express.</span></div>
+                <p>Mzansi's premium grocery destination. Quality products, everyday convenience and a better way to shop.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#story">Our Story</a>
+                    <a href="index.html#shop">Shop</a>
+                    <a href="index.html#features">Why Choose Us</a>
+                </div>
+            </div>
+            <div>
+                <h3>Customer Information</h3>
+                <div class="footer-links">
+                    <a href="index.html#contact">Contact Us</a>
+                    <a href="index.html#shop">Our Products</a>
+                    <a href="index.html#contact">Delivery Information</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">(c) 2026 SkhaftinExpress. All Rights Reserved. Proudly made for Mzansi.</div>
+    </div>
+</footer>
+
+</body>
+</html>
